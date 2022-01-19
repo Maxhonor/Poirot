@@ -1,0 +1,266 @@
+//第七章函数习题
+/*#include<stdio.h>
+//汉诺塔问题：从A座上移动n个盘子到C座，输出移动n个盘子的步骤。
+//一位法国数学家曾编写过一个印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，
+//一块黄铜板上插着三根宝石针。印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，
+//这就是所谓的汉诺塔。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：
+//一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，
+//当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，
+//而梵塔、庙宇和众生也都将同归于尽.
+//不管这个传说的可信度有多大，如果考虑一下把64片金片，由一根针上移到另一根针上，并且始终保持上小下大的顺序。
+//这需要多少次移动呢 ? 这里需要递归的方法。
+//假设有n片，移动次数是f(n).显然f⑴ = 1, f⑵ = 3, f⑶ = 7，且f(k + 1） = 2 * f(k) + 1。
+//此后不难证明f(n) = 2 ^ n - 1。n = 64时，
+//	f（64） = 2 ^ 64 - 1 = 18446744073709551615
+//	假如每秒钟一次，共需多长时间呢？一个平年365天有 31536000 秒，闰年366天有31622400秒，平均每年31556952秒，计算一下，
+//	18446744073709551615 / 31556952 = 584554049253.855年
+//	这表明移完这些金片需要5845亿年以上，而地球存在至今不过45亿年，太阳系的预期寿命据说也就是数百亿年。
+//真的过了5845亿年，不说太阳系和银河系，至少地球上的一切生命，连同梵塔、庙宇等，都早已经灰飞烟灭。
+//	例：
+//	（1）输入：1  输出：A-- > C
+void Move(char a, char c)
+{
+	printf("%c-->%c\n", a, c);
+
+}
+void HNT(int n, char a, char c, char b)
+{
+	if (n == 1)
+	{
+		Move(a, c);
+	}
+	else
+	{
+	   HNT(n - 1, a, b, c);//其余n-1个盘子从A移到B借助C
+	   Move(a, c);//大盘子从A移到C
+	   HNT(n - 1, b, c, a);
+	}
+
+}
+int main()
+{
+	int n = 0;
+	scanf("%d", &n);
+	HNT(n, 'A', 'C', 'B');//盘子从A移到C借助B
+	return 0;
+}*/
+/*#include<stdio.h>
+//有两个班级，分别有5个和10个学生，调用一个average函数，分别求这两个班的平均成绩。
+//aver1 = 80.40, aver2 = 78.20
+float aver(float a[], int n)
+{
+	float  sum=0,average;
+	for (int i = 0; i < n; i++)
+	{
+		sum += a[i];
+	}
+	average = sum / n;
+	return average;
+}
+int main()
+{
+    float a1[5] = { 98.5,97,91.5,60,55 };
+    float a2[10] = { 67.5,89.5,99,69.5,77,89.5,76.5,54,60,99.5 };
+    float aver1=aver(a1, 5);
+    float aver2 = aver(a2, 10);
+   printf("aver1=%.2f,aver2=%.2f", aver1, aver2);
+return 0;
+}*/
+/*#include<stdio.h>
+#define N 5
+//从键盘上输入5个学生的成绩，计算平均成绩。
+//注意：成绩的输入和平均成绩的计算请使用数组作形参的函数。
+//提示：使用 #define N 5
+//（1）输入：90 90 91 91 90  输出：average = 90.40
+//（2）输入：90 90 100 80 80 输出：average = 88.00
+float aver(float ar[], int n)
+{
+	float sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%f", &ar[i]);//输入每一个元素存入到数组中
+	}
+	for (int j = 0; j < n; j++)
+	{
+		sum += ar[j];
+	}
+    float average = sum / n;
+	return average;
+}
+int main()
+{
+	float a[5] = { 0 };
+	printf("average=%.2f", aver(a,N));
+	return 0;
+}*/
+/*#include<stdio.h>
+#define N 6
+void input(float a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%f", &a[i]);
+	}
+}
+void bubbleSort(float  a[], int n)//冒泡法排序从小到大顺序
+{
+	float t=0;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = 0; j < n - i - 1; j++)
+		{
+			if (a[j] > a[j + 1])
+			{
+				t = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = t;
+			}
+		}
+	}
+
+}
+void output(float  a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("%.2f \n", a[i]);
+	}
+}
+int main()
+{
+	   float a[N];
+	   input(a, N);
+
+	   bubbleSort(a, N);
+
+	   output(a, N);
+
+	return 0;
+}*/
+/*#include<stdio.h>//选择法排序
+#define N 6
+//（1）输入：6 5 4 3 2 1  输出：1 2 3 4 5 6
+//（2）输入：4 5 6 4 5 6  输出：4 4 5 5 6 6
+//（3）输入：1 2 3 4 5 6  输出：1 2 3 4 5 6
+//（4）输入：3 2 1 4 5 6  输出：1 2 3 4 5 6
+void input(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+}
+void sort(int a[], int n)
+{
+
+	for (int i = 0; i < n; i++)
+	{
+		int min = i;//先确定一个最小值下标
+		for (int j = i + 1; j < n; j++)
+		{
+			if (a[min] > a[j])
+			{
+				min=j;//找到最小值下标
+			}
+		}
+		int t;
+		if (i != min)//每一次循环后将最小值下标的值依次赋给下标为0,1,2,3,4,5
+		{
+			t = a[i];
+			a[i] = a[min];
+			a[min] = t;
+		}
+	}
+}
+
+void output(int a[], int n)
+{
+	for (int j = 0; j < n; j++)
+	{
+		printf("%d \n", a[j]);
+	}
+}
+int main()
+{
+	do
+	{
+	 int a[N];
+	input(a, N);
+	sort(a, N);
+	output(a, N);
+	} while (1);
+	return 0;
+}*/
+/*#include<stdio.h>
+//有一个3 * 4的矩阵，求所有元素中的最大值。
+//从键盘上输入12个整数，作为矩阵的元素；然后按一定格式（每个元素最小宽度为5）输出这些元素；查找最大值并输出。
+//（1）输入：1 2 3 4 5 6 7 8 9 10 11 12
+//输出：
+//1    2    3    4
+//5    6    7    8
+//9   10   11   12
+//max = 12
+//（2）输入：1 2 333 4 5 66 7 8 98 105 11 12
+//输出：
+//1    2  333    4
+//5   66    7    8
+//98  105   11   12
+//max = 333
+void output(int a[], int n)
+{
+	int max = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (i % 3 == 0)
+			printf("\n");
+		if (max < a[i])
+		{
+			max = a[i];
+		}
+		printf("%5d", a[i]);
+	}
+	printf("\nmax=%d", max);
+}
+int main()
+{
+	int a[12];
+	for (int i = 0; i < 12; i++)
+	{
+		scanf("%d", &a[i]);
+	}
+	output(a, 12);
+	return 0;
+}*/
+#include<stdio.h>
+//从键盘上输入10个学生的成绩，写一个函数，当主函数调用此函数后，能求出平均分、最高分和最低分。
+//例：
+//（1）输入：89 95 87.5 100 67.5 97 59 84 73 90 输出：max = 100.00, min = 59.00, average = 84.20
+void F(float grade[], int n)
+{
+	float max = 0, min =grade[0], average = 0;
+	float sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (max < grade[i])
+		{
+			max = grade[i];
+		}
+		if (min > grade[i])
+		{
+			min = grade[i];
+		}
+		sum += grade[i];
+	}
+	average = sum / n;
+	printf("max=%.2f,min=%.2f,average=%.2f\n", max, min, average);
+}
+int main()
+{
+	float grade[10];
+	for (int i = 0; i < 10; i++)
+	{
+		scanf("%f", &grade[i]);
+	}
+	F(grade, 10);
+	return 0;
+}

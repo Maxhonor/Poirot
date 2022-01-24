@@ -1,0 +1,216 @@
+//从键盘上输入一个字符串，输出它的长度。（要求不要使用strlen函数）
+/*#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char a[80]="\0";
+	int i = 0,l=0;
+	gets_s(a);
+	while (a[i] != '\0')
+	{
+		i++;
+		l++;
+	}
+	printf("%d\n", l);
+	return 0;
+}*/
+//编一个程序，将两个字符串连接起来，不要用strcat函数。
+/*#include<stdio.h>
+int main()
+{
+	char s1[80];
+	char s2[80];
+	int i = 0, j = 0, n=0,m=0;
+	gets_s(s1);
+	gets_s(s2);
+	while (s1[i] != '\0')
+	{
+		i++;
+		n++;
+	}
+	while (s2[j] != '\0')
+	{
+		j++;
+		m++;
+	}
+	for (j = 0; j <= m+n ; j++)//把s2数组内的元素复制过来后，其最后一个'\0'也需复制过来
+	{
+		s1[n + j] = s2[j];
+	}
+	puts(s1);
+	return 0;
+}*/
+//#include<stdio.h>
+//字符串的复制
+/*int main()
+{
+	char s1[80], s2[80];
+	int i = 0,j=0;
+	gets_s(s1);
+	while (s1[i] != '\0')
+	{
+		j++;
+		i++;
+	}
+	for (i = 0; i <= j; i++)
+	{
+		s2[i] = s1[i];
+	}
+	puts(s2);
+	return 0;
+}*/
+/*#include<stdio.h>
+//从键盘上输入6个整数，依次存放到数组中。查找这个数组中的最大值与最小值，并输出它们及它们的下标。
+int main()
+{
+	int a[6],max,min,xb1,xb2;
+	int i = 0;
+	for ( i = 0; i < 6; i++)
+	{
+		scanf("%d", &a[i]);
+		if (i == 0)
+		{
+			max = a[0];
+			min = a[0];
+			xb1 = 0;
+			xb2 = 0;
+		}
+		if (max < a[i])
+		{
+			max = a[i];
+			xb1 = i;
+		}
+		if (min > a[i])
+		{
+			min = a[i];
+			xb2 = i;
+		}
+	}
+	printf("max=%d,ind1=%d;min=%d,ind2=%d", max, xb1, min, xb2);
+	return 0;
+}*/
+/*#include<stdio.h>
+//有一个班有4个学生，期末考试有5门课进行了考试，老师将这些成绩输入到计算机，计算每个人平均成绩，
+//并查找平均成绩最高的学生，输出他（她）的序号和平均成绩（最小宽度为7，保留2位小数）。
+//输入:
+//90 90 90 90 90
+//89 89 89 89 89
+//78 68 89 89 77
+//90 91 91 92 92
+//输出：
+//stu_order=3
+//max=  91.20
+int main()
+{
+	int a[4][5];
+	float b0=0,b1=0,b2=0,b3=0;
+	float max = 0;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			scanf("%d", &a[i][j]);
+		}
+	}
+	for (int j = 0; j < 5; j++)
+	{
+		b0 += a[0][j];
+		b1 += a[1][j];
+		b2 += a[2][j];
+		b3 += a[3][j];
+
+	}
+	max = b0 / 5.0;
+	float t;
+	int z = 0;
+	if (max < b1/5)
+	{
+		t = max;
+		max = b1/5;
+		b1 = t;
+		z = 1;
+	}
+	if (max < b2/5)
+	{
+		t = max;
+		max = b2/5;
+		b2 = t;
+		z = 2;
+	}
+	if (max < b3/5)
+	{
+		t = max;
+		max = b3/5;
+		b3 = t;
+		z = 3;
+	}
+	printf("stu_order=%d\nmax=%7.2f\n", z, max);
+	return 0;
+}*/
+//从键盘上输入5个字符串，对它们进行从小到大排序并输出。
+//提示：可使用起泡法或选择法，字符串存储在二维数组中。
+/*#include<stdio.h>
+#include<string.h>
+#define N 5
+//China
+//India
+//Korea
+//Japan
+//America
+//strcmp(str1, str2)
+//若str1 = str2.return 0;
+//若str1 > str2.return 正数;
+//若str1 < str2.return 负数;
+int main()
+{
+	char s[N][80];
+	for (int i = 0; i < N; i++)
+	{
+		gets_s(s[i]);//对应的是s[i][0]...s[i][79]
+	}
+	//起泡法排序
+	char t[80];
+	for (int i = 0; i < N - 1; i++)
+	{
+		for (int j = 0; j < N - i - 1; j++)
+		{
+			if (strcmp(s[j], s[j + 1]) > 0)
+			{
+				strcpy(t, s[j]);
+				strcpy(s[j], s[j + 1]);
+				strcpy(s[j + 1], t);
+			}
+		}
+	}
+	printf("After sorting:\n");
+	for (int i = 0; i < N; i++)
+	{
+		puts(s[i]);
+	}
+	return 0;
+}*/	
+/*//从键盘上输入一个字符串，将其逆序存放并输出。
+//例：
+//（1）输入：abc 输出：cba
+//（2）输入：abc 123 输出：321 cba
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+	char s1[80], s2[80];
+	int i = 0, j = 0;
+	gets_s(s1);
+	while (s1[i] != '\0')
+	{
+		j++;
+		i++;
+	}
+	for (i=0; s1[i]!='\0'; i++)
+	{
+		s2[i] = s1[j - 1 - i];
+	}
+	s2[i] = '\0';
+	puts(s2);
+	return 0;
+}*/
+
